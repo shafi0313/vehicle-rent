@@ -13,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, HasRoles; //HasUuid;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, HasRoles, HasUuid;
 
     /**
      * The attributes that are mass assignable.
@@ -51,9 +51,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // protected $primaryKey = 'uuid';
-    // protected $keyType = 'string';
-    // public $incrementing = false;
+    protected $primaryKey = 'uuid';
+    protected $keyType = 'string';
+    public $incrementing = false;
 
 
 }
