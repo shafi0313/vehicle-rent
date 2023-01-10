@@ -72,7 +72,13 @@ class RolesAndPermissionsSeeder extends Seeder
                 'setting-manage',
                 'language-manage',
             ],
-
+            'vehicle'=>[
+                'vehicle-manage',
+                'vehicle-add',
+                'vehicle-edit',
+                'vehicle-delete',
+                'vehicle-change'
+            ],
         ];
         foreach ($pers as $per => $val) {
             foreach ($val as $name) {

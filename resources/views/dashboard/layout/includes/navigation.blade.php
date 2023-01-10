@@ -23,6 +23,16 @@
             </li>
         </ul>
     </li>
+
+    <li>
+        <a href="{{ route('admin.vehicle.index') }}">
+            <div class="parent-icon">
+                <ion-icon name="document-text-sharp"></ion-icon>
+            </div>
+            <div class="menu-title">Vehicle</div>
+        </a>
+    </li>
+
     <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon">
