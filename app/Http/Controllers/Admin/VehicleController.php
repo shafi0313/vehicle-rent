@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Vehicle;
+use App\Models\VehicleBrand;
 use Illuminate\Http\Request;
+use App\Models\VehicleCategory;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\StoreVehicleRequest;
@@ -22,6 +25,16 @@ class VehicleController extends Controller
                 ->addColumn('created_at', function ($row) {
                     return $row->created_at->diffForHumans();
                 })
+                ->addColumn('rider_name', function ($row) {
+                    return $row->created_at->diffForHumans();
+                })
+                ->addColumn('brand_name', function ($row) {
+                    return $row->created_at->diffForHumans();
+                })
+                ->addColumn('image', function ($row) {
+                    $src = asset('uploads/images/vehicle/'.$row->image);
+                    return '<img src="'.$src.'" width="100px">';
+                })
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     if (userCan('vehicle-edit')) {
@@ -32,12 +45,14 @@ class VehicleController extends Controller
                     }
                     return $btn;
                 })
-                ->rawColumns(['check', 'age', 'action', 'image', 'created_at'])
+                ->rawColumns(['rider_name','brand_name','action', 'image', 'created_at'])
                 ->make(true);
         }
-        return view('dashboard.vehicle.index');
+        $users = User::whereRole(2)->orderBy('name')->get(['uuid', 'name']);
+        $vehicleCategories = VehicleCategory::orderBy('name')->get(['uuid', 'name']);
+        $vehicleBrands = VehicleBrand::orderBy('name')->get(['uuid', 'name']);
+        return view('dashboard.vehicle.index', compact('users', 'vehicleCategories', 'vehicleBrands'));
     }
-
 
     public function store(StoreVehicleRequest $request)
     {
@@ -45,6 +60,10 @@ class VehicleController extends Controller
             return $error;
         }
         $data = $request->validated();
+        $data['user_uuid'] = user()->uuid;
+        if($request->hasFile('image')){
+            $data['image'] = imageStore($request, 'image','vehicle', 'uploads/images/vehicle/');
+        }
 
         try {
             Vehicle::create($data);

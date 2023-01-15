@@ -14,6 +14,7 @@
     padding: 5px 1.5rem 1.5rem 1.5rem !important;
 }
 
+/* Form input required */
 .required::after {
     content: "*";
     color: red;
@@ -24,6 +25,12 @@
     margin-top: 10px;
 }
 
+/* Nav icon width */
+.parent-icon {
+    width: 18px;
+}
+
+/* No sort */
 .no-sort::after {
     display: none!important;
 }

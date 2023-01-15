@@ -1,5 +1,5 @@
 @extends('dashboard.layout.app')
-@section('title', 'Vehicle')
+@section('title', 'Vehicle Brand')
 @section('content')
     @push('custom_css')
         @include('dashboard.layout.includes.data_table_css')
@@ -18,14 +18,14 @@
                                     <ion-icon name="home-outline"></ion-icon>
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Vehicle</li>
+                            <li class="breadcrumb-item active" aria-current="page">Vehicle Brand</li>
                         </ol>
                     </nav>
                 </div>
             </div>
             <!--end breadcrumb-->
             <div class="d-flex justify-content-between index_title">
-                <h6 class="mb-0">Vehicle List</h6>
+                <h6 class="mb-0">Vehicle Brand List</h6>
                 <a data-toggle="modal" data-bs-target="#createModal" data-bs-toggle="modal" class="btn btn-primary">Add
                     New</a>
             </div>
@@ -39,14 +39,7 @@
                                 {!! $headData = '
                                 <tr>
                                     <th>SL</th>
-                                    <th>Rider Name</th>
                                     <th>Name</th>
-                                    <th>Brand</th>
-                                    <th>Model</th>
-                                    <th>Number of Seats</th>
-                                    <th>Number of Passengers</th>
-                                    <th>Specification</th>
-                                    <th>Photo</th>
                                     <th class="no-sort" width="60px">Action</th>
                                 </tr>
                                 ' !!}
@@ -63,8 +56,8 @@
         </div>
         <!-- end page content-->
     </div>
-    @can('vehicle-add')
-        @include('dashboard.vehicle.create')
+    @can('vehicle-brand-add')
+        @include('dashboard.vehicle_brand.create')
     @endcan
     @push('custom_scripts')
         @include('dashboard.layout.includes.data_table_js')
@@ -77,7 +70,7 @@
                     ordering: true,
                     responsive: true,
                     scrollY: 400,
-                    ajax: "{{ route('admin.vehicle.index') }}",
+                    ajax: "{{ route('admin.vehicle-brand.index') }}",
                     columns: [
                         // {
                         //     data: 'check',
@@ -92,36 +85,8 @@
                             orderable: false,
                         },
                         {
-                            data: 'rider_name',
-                            name: 'rider_name'
-                        },
-                        {
                             data: 'name',
                             name: 'name'
-                        },
-                        {
-                            data: 'brand',
-                            name: 'brand'
-                        },
-                        {
-                            data: 'model',
-                            name: 'model'
-                        },
-                        {
-                            data: 'num_of_seat',
-                            name: 'num_of_seat'
-                        },
-                        {
-                            data: 'num_of_passenger',
-                            name: 'num_of_passenger'
-                        },
-                        {
-                            data: 'specification',
-                            name: 'specification'
-                        },
-                        {
-                            data: 'image',
-                            name: 'image'
                         },
                         {
                             data: 'action',

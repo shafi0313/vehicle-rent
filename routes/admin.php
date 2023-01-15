@@ -6,14 +6,15 @@ use App\Http\Controllers\Admin\BlankController;
 use App\Http\Controllers\Admin\VehicleController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\VehicleBrandController;
 use App\Http\Controllers\Setting\AppDbBackupController;
+use App\Http\Controllers\Admin\VehicleCategoryController;
 use App\Http\Controllers\Setting\Permission\RoleController;
 use App\Http\Controllers\Setting\Permission\PermissionController;
 
 Route::resource('blank', BlankController::class)->except(['store','edit', 'update','delete']);
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
 
 // Global Ajax
 Route::delete('delete-all/{model}', [AjaxController::class, 'deleteAll'])->name('delete_all');
@@ -36,11 +37,9 @@ Route::controller(AppDbBackupController::class)->prefix('app-db-backup')->group(
     Route::post('/backup-delete/{name}/{ext}', 'deleteBackup')->name('backup.delete');
 });
 
-Route::resource('/admin-user', AdminUserController::class,[
-    'parameters' => [
-        'admin-user' => 'admin_user'
-    ]
-]);
+Route::resource('/admin-user', AdminUserController::class,['parameters' => ['admin-user' => 'admin_user']]);
 
-Route::resource('vehicle', VehicleController::class);
+Route::resource('vehicle-category', VehicleCategoryController::class,['parameters' => ['vehicle-category' => 'vehicle_category']])->except(['create', 'show']);
+Route::resource('vehicle-brand', VehicleBrandController::class,['parameters' => ['vehicle-brand' => 'vehicle_brand']])->except(['create', 'show']);
+Route::resource('vehicle', VehicleController::class)->except(['create', 'show']);
 

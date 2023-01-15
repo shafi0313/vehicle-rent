@@ -25,9 +25,27 @@
     </li>
 
     <li>
+        <a href="{{ route('admin.vehicle-category.index') }}">
+            <div class="parent-icon">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </div>
+            <div class="menu-title">Vehicle Category</div>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ route('admin.vehicle-brand.index') }}">
+            <div class="parent-icon">
+                <i class="fa-solid fa-b"></i>
+            </div>
+            <div class="menu-title">Vehicle Brand</div>
+        </a>
+    </li>
+
+    <li>
         <a href="{{ route('admin.vehicle.index') }}">
             <div class="parent-icon">
-                <ion-icon name="document-text-sharp"></ion-icon>
+                <i class="fa-solid fa-van-shuttle"></i>
             </div>
             <div class="menu-title">Vehicle</div>
         </a>

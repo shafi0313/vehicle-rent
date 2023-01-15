@@ -1,20 +1,19 @@
 <!-- Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="createModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Vehicle Category</h5>
+                <h5 class="modal-title">Add Vehicle Brand</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form onsubmit="ajaxStore(event, this, 'editModal')" action="{{ route('admin.vehicle-category.update', $vehicle_category->uuid) }}"
+            <form onsubmit="ajaxStore(event, this, 'createModal')" action="{{ route('admin.vehicle-brand.store') }}"
                 method="POST">
-                @csrf @method('PUT')
-                <input type="hidden" name="update" value="1">
+                @csrf
                 <div class="modal-body">
                     <div class="row g-3">
                         <div class="col-md-12">
                             <label for="name" class="form-label required">Name </label>
-                            <input type="search" name="name" class="form-control" value="{{ $vehicle_category->name }}"
+                            <input type="search" name="name" class="form-control" value="{{ old('name') }}"
                                 required />
                             @if ($errors->has('name'))
                                 <div class="alert alert-danger">{{ $errors->first('name') }}</div>
