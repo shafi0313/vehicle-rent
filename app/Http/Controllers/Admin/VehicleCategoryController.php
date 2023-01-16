@@ -25,10 +25,10 @@ class VehicleCategoryController extends Controller
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     if (userCan('vehicle-category-edit')) {
-                        $btn .= view('button', ['type' => 'ajax-edit', 'route' => route('admin.vehicle-category.edit', $row->uuid) , 'row' => $row]);
+                        $btn .= view('button', ['type' => 'ajax-edit', 'route' => route('admin.vehicle-category.edit', $row->id) , 'row' => $row]);
                     }
                     if (userCan('vehicle-category-delete')) {
-                        $btn .= view('button', ['type' => 'ajax-delete', 'route' => route('admin.vehicle-category.destroy', $row->uuid), 'row' => $row, 'src' => 'dt']);
+                        $btn .= view('button', ['type' => 'ajax-delete', 'route' => route('admin.vehicle-category.destroy', $row->id), 'row' => $row, 'src' => 'dt']);
                     }
                     return $btn;
                 })

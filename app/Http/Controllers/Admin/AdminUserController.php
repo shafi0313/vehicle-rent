@@ -22,7 +22,7 @@ class AdminUserController extends Controller
             return DataTables::of($admin_users)
                 ->addIndexColumn()
                 ->addColumn('check', function ($row) {
-                    return '<input type="checkbox" name="select[]" onclick="checkcheckbox()" id="check_'.$row->uuid.'" class="check" value="'.$row->uuid.'">';
+                    return '<input type="checkbox" name="select[]" onclick="checkcheckbox()" id="check_'.$row->id.'" class="check" value="'.$row->id.'">';
                 })
                 ->addColumn('created_at', function ($row) {
                     return $row->created_at->diffForHumans();
@@ -37,10 +37,10 @@ class AdminUserController extends Controller
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     if (userCan('admin-user-edit')) {
-                        $btn .= view('button', ['type' => 'ajax-edit', 'route' => route('admin.admin-user.edit', $row->uuid) , 'row' => $row]);
+                        $btn .= view('button', ['type' => 'ajax-edit', 'route' => route('admin.admin-user.edit', $row->id) , 'row' => $row]);
                     }
                     if (userCan('admin-user-delete')) {
-                        $btn .= view('button', ['type' => 'ajax-delete', 'route' => route('admin.admin-user.destroy', $row->uuid), 'row' => $row, 'src' => 'dt']);
+                        $btn .= view('button', ['type' => 'ajax-delete', 'route' => route('admin.admin-user.destroy', $row->id), 'row' => $row, 'src' => 'dt']);
                     }
                     return $btn;
                 })

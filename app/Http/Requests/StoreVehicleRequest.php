@@ -24,14 +24,14 @@ class StoreVehicleRequest extends FormRequest
     public function rules()
     {
         return [
-            'vehicle_category_uuid' => 'required|uuid',
-            'vehicle_brand_uuid'    => 'required|uuid',
-            'name'                  => 'required|string',
-            'num_of_seat'           => 'required|integer',
-            'num_of_passenger'      => 'required|integer',
-            'model'                 => 'required|string',
-            'specification'         => 'nullable|text',
-            'image'                 => 'nullable|image||mimes:jpeg,png,jpg',
+            'vehicle_category_id' => 'required|id',
+            'vehicle_brand_id'    => 'required|id',
+            'name'                => 'required|string',
+            'num_of_seat'         => 'required|integer',
+            'num_of_passenger'    => 'required|integer',
+            'model'               => 'required|string',
+            'specification'       => 'nullable|text',
+            'image'               => 'nullable|image||mimes:jpeg,png,jpg',
         ];
     }
 }

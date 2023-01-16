@@ -12,39 +12,39 @@
                 <div class="modal-body">
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label for="user_uuid" class="form-label required">Rider </label>
-                                <select name="user_uuid" class="form-select mb-3" required>
+                            <label for="user_id" class="form-label required">Rider </label>
+                                <select name="user_id" class="form-select mb-3" required>
                                     <option value="">Choose...</option>
                                     @foreach ($users as $user)
-                                    <option value="{{ $user->uuid }}">{{ $user->name }}</option>
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
                                     @endforeach
                                 </select>
-                            @if ($errors->has('user_uuid'))
-                                <div class="alert alert-danger">{{ $errors->first('user_uuid') }}</div>
+                            @if ($errors->has('user_id'))
+                                <div class="alert alert-danger">{{ $errors->first('user_id') }}</div>
                             @endif
                         </div>
                         <div class="col-md-6">
-                            <label for="vehicle_category_uuid" class="form-label required">Vehicle Category </label>
-                                <select name="vehicle_category_uuid" class="form-select mb-3" required>
+                            <label for="vehicle_category_id" class="form-label required">Vehicle Category </label>
+                                <select name="vehicle_category_id" class="form-select mb-3" required>
                                     <option value="">Choose...</option>
                                     @foreach ($vehicleCategories as $vehicleCategory)
-                                    <option value="{{ $vehicleCategory->uuid }}">{{ $vehicleCategory->name }}</option>
+                                    <option value="{{ $vehicleCategory->id }}">{{ $vehicleCategory->name }}</option>
                                     @endforeach
                                 </select>
-                            @if ($errors->has('vehicle_category_uuid'))
-                                <div class="alert alert-danger">{{ $errors->first('vehicle_category_uuid') }}</div>
+                            @if ($errors->has('vehicle_category_id'))
+                                <div class="alert alert-danger">{{ $errors->first('vehicle_category_id') }}</div>
                             @endif
                         </div>
                         <div class="col-md-6">
-                            <label for="vehicle_brand_uuid" class="form-label required">Vehicle Brand </label>
-                                <select name="vehicle_brand_uuid" class="form-select mb-3" required>
+                            <label for="vehicle_brand_id" class="form-label required">Vehicle Brand </label>
+                                <select name="vehicle_brand_id" class="form-select mb-3" required>
                                     <option value="">Choose...</option>
                                     @foreach ($vehicleBrands as $vehicleBrand)
-                                    <option value="{{ $vehicleBrand->uuid }}">{{ $vehicleBrand->name }}</option>
+                                    <option value="{{ $vehicleBrand->id }}">{{ $vehicleBrand->name }}</option>
                                     @endforeach
                                 </select>
-                            @if ($errors->has('vehicle_brand_uuid'))
-                                <div class="alert alert-danger">{{ $errors->first('vehicle_brand_uuid') }}</div>
+                            @if ($errors->has('vehicle_brand_id'))
+                                <div class="alert alert-danger">{{ $errors->first('vehicle_brand_id') }}</div>
                             @endif
                         </div>
                         <div class="col-md-6">

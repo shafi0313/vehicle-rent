@@ -14,13 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->uuid('uuid')->unique();
-            $table->string('user_uuid')->index();
-            $table->foreign('user_uuid')->references('uuid')->on('users')->onDelete('cascade');
-            $table->string('vehicle_category_uuid')->index();
-            $table->foreign('vehicle_category_uuid')->references('uuid')->on('vehicle_categories')->onDelete('cascade');
-            $table->string('vehicle_brand_uuid')->index();
-            $table->foreign('vehicle_brand_uuid')->references('uuid')->on('vehicle_categories')->onDelete('cascade');
+            $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('vehicle_category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('vehicle_brand_id')->constrained()->cascadeOnDelete();
             $table->string('name',191)->nullable();
             $table->tinyInteger('num_of_seat')->nullable();
             $table->tinyInteger('num_of_passenger')->nullable();

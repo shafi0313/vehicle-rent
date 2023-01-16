@@ -6,7 +6,7 @@
                 <h5 class="modal-title">Add Vehicle Brand</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form onsubmit="ajaxStore(event, this, 'editModal')" action="{{ route('admin.vehicle-brand.update', $vehicle_brand->uuid) }}"
+            <form onsubmit="ajaxStore(event, this, 'editModal')" action="{{ route('admin.vehicle-brand.update', $vehicle_brand->id) }}"
                 method="POST">
                 @csrf @method('PUT')
                 <input type="hidden" name="update" value="1">

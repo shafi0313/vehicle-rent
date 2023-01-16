@@ -25,10 +25,10 @@ class VehicleBrandController extends Controller
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     if (userCan('vehicle-brand-edit')) {
-                        $btn .= view('button', ['type' => 'ajax-edit', 'route' => route('admin.vehicle-brand.edit', $row->uuid) , 'row' => $row]);
+                        $btn .= view('button', ['type' => 'ajax-edit', 'route' => route('admin.vehicle-brand.edit', $row->id) , 'row' => $row]);
                     }
                     if (userCan('vehicle-brand-delete')) {
-                        $btn .= view('button', ['type' => 'ajax-delete', 'route' => route('admin.vehicle-brand.destroy', $row->uuid), 'row' => $row, 'src' => 'dt']);
+                        $btn .= view('button', ['type' => 'ajax-delete', 'route' => route('admin.vehicle-brand.destroy', $row->id), 'row' => $row, 'src' => 'dt']);
                     }
                     return $btn;
                 })

@@ -38,19 +38,19 @@ class VehicleController extends Controller
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     if (userCan('vehicle-edit')) {
-                        $btn .= view('button', ['type' => 'ajax-edit', 'route' => route('admin.vehicle.edit', $row->uuid) , 'row' => $row]);
+                        $btn .= view('button', ['type' => 'ajax-edit', 'route' => route('admin.vehicle.edit', $row->id) , 'row' => $row]);
                     }
                     if (userCan('vehicle-delete')) {
-                        $btn .= view('button', ['type' => 'ajax-delete', 'route' => route('admin.vehicle.destroy', $row->uuid), 'row' => $row, 'src' => 'dt']);
+                        $btn .= view('button', ['type' => 'ajax-delete', 'route' => route('admin.vehicle.destroy', $row->id), 'row' => $row, 'src' => 'dt']);
                     }
                     return $btn;
                 })
                 ->rawColumns(['rider_name','brand_name','action', 'image', 'created_at'])
                 ->make(true);
         }
-        $users = User::whereRole(2)->orderBy('name')->get(['uuid', 'name']);
-        $vehicleCategories = VehicleCategory::orderBy('name')->get(['uuid', 'name']);
-        $vehicleBrands = VehicleBrand::orderBy('name')->get(['uuid', 'name']);
+        $users = User::whereRole(2)->orderBy('name')->get(['id', 'name']);
+        $vehicleCategories = VehicleCategory::orderBy('name')->get(['id', 'name']);
+        $vehicleBrands = VehicleBrand::orderBy('name')->get(['id', 'name']);
         return view('dashboard.vehicle.index', compact('users', 'vehicleCategories', 'vehicleBrands'));
     }
 
@@ -60,7 +60,7 @@ class VehicleController extends Controller
             return $error;
         }
         $data = $request->validated();
-        $data['user_uuid'] = user()->uuid;
+        $data['user_id'] = user()->id;
         if($request->hasFile('image')){
             $data['image'] = imageStore($request, 'image','vehicle', 'uploads/images/vehicle/');
         }
