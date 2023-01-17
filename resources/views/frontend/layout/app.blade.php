@@ -134,7 +134,7 @@
                                 <div class="">
                                     <br>
                                     <span>Don’t have an account? </span><a
-                                        href="{{ route('frontend.registerView') }}"
+                                        href=""
                                         style="font-size: 18px; color:#2874F0">Sign Up Now!</a>
                                 </div>
                             </div>
